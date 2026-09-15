@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory — Fausto Commercial</title>
+<meta name="description" content="Search Fausto Commercial's South Florida inventory by asset class, market, price and size.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="fc.css">
+</head>
+<body>
+
+<!-- No hero on this page, so the bar is solid from the start. -->
+<header class="hdr solid">
+  <div class="wrap hdr-in">
+    <a class="logo" href="index.html" aria-label="Fausto Commercial home">
+      <img src="https://faustocommercial.com/wp-content/uploads/2026/07/202404.svg" alt="Fausto Commercial">
+    </a>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <ul class="nav" id="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#engage">List</a></li>
+      <li><a href="index.html#featured">Buy</a></li>
+      <li class="has-sub cur">
+        <a href="inventory.html" class="on">Inventory<span class="chev">›</span></a>
+        <ul class="sub"><li><a href="inventory.html?status=Sold">Recent sales</a></li></ul>
+      </li>
+      <li class="has-sub">
+        <a href="index.html#founder">About us<span class="chev">›</span></a>
+        <ul class="sub"><li><a href="index.html#founder">Meet the team</a></li></ul>
+      </li>
+      <li class="has-sub">
+        <a href="index.html#signup">Contact<span class="chev">›</span></a>
+        <ul class="sub"><li><a href="index.html#signup">Join the team</a></li></ul>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="pagehead-bg" aria-hidden="true">
+    <img src="https://faustocommercial.com/wp-content/uploads/2026/09/openart-image_1789465944983_488cd3d4_1789465946993_40945952-scaled.webp" alt="">
+  </div>
+  <div class="wrap">
+    <p class="eyebrow on-dark">Exclusive representation</p>
+    <p class="d"><span class="grad-l"><b>Inventory</b></span></p>
+    <p class="lede on-dark" style="margin-top:18px;max-width:52ch">Everything we're representing across South Florida, filtered how you need it.</p>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="frow">
+      <div class="field">
+        <label for="f-q">Keyword</label>
+        <input id="f-q" type="search" placeholder="Address, area, asset&hellip;">
+      </div>
+      <div class="field">
+        <label for="f-type">Asset class</label>
+        <select id="f-type"></select>
+      </div>
+      <div class="field">
+        <label for="f-region">Market</label>
+        <select id="f-region"></select>
+      </div>
+      <div class="field">
+        <label for="f-status">Availability</label>
+        <select id="f-status"></select>
+      </div>
+      <div class="field">
+        <label for="f-price">Price</label>
+        <select id="f-price">
+          <option value="">Any price</option>
+          <option value="0-1000000">Under $1M</option>
+          <option value="1000000-3000000">$1M &ndash; $3M</option>
+          <option value="3000000-6000000">$3M &ndash; $6M</option>
+          <option value="6000000-999999999">$6M and above</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="toolbar">
+    <span class="count" id="count"></span>
+    <span class="spacer"></span>
+    <label class="sr-only" for="f-sort">Sort by</label>
+    <select id="f-sort" class="sel">
+      <option value="price-desc">Price, high to low</option>
+      <option value="price-asc">Price, low to high</option>
+      <option value="size-desc">Building size</option>
+      <option value="land-desc">Lot size</option>
+      <option value="title-asc">Name, A&ndash;Z</option>
+    </select>
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="v-grid" aria-pressed="true">Grid</button>
+      <button type="button" id="v-list" aria-pressed="false">List</button>
+    </div>
+    <button type="button" class="btn btn-dark" id="reset">Reset</button>
+  </div>
+
+  <div id="results" style="padding-block:34px"></div>
+  <div class="pager" id="pager"></div>
+</div>
+
+<div class="stage" style="text-align:center">
+  <div class="fx" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap" style="padding-block:clamp(70px,8vw,120px)">
+    <p class="eyebrow on-dark">Not seeing it?</p>
+    <p class="d" style="font-size:clamp(28px,3.6vw,52px)"><span class="grad-l">We transact more<br>than we <b>publish</b></span></p>
+    <p class="lede on-dark" style="max-width:54ch;margin:22px auto 32px">Off-market opportunities move through the desk constantly. Tell us the profile you're looking for and we'll bring you what fits.</p>
+    <a class="btn" href="https://faustocommercial.com/contact/" target="_blank" rel="noopener">Contact the team</a>
+  </div>
+</div>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <span>&copy; <span id="yr"></span> Fausto Commercial</span>
+    <span class="spacer"></span>
+    <a href="index.html">Home</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="https://faustocommercial.com/" target="_blank" rel="noopener">faustocommercial.com</a>
+  </div>
+</footer>
+
+<script src="fc-data.js"></script>
+<script src="fc-app.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var PER_PAGE = 9;
+  var state = { view: 'grid', page: 1 };
+  var all = [];
+
+  var $ = function (id) { return document.getElementById(id); };
+  $('yr').textContent = new Date().getFullYear();
+
+  var tgl = $('navtoggle'), nav = $('nav');
+  tgl.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    tgl.setAttribute('aria-expanded', String(open));
+    tgl.textContent = open ? 'Close' : 'Menu';
+  });
+
+  function apply() {
+    var q = $('f-q').value.trim().toLowerCase();
+    var type = $('f-type').value;
+    var region = $('f-region').value;
+    var status = $('f-status').value;
+    var price = $('f-price').value;
+    var sort = $('f-sort').value;
+
+    var rows = all.slice();
+
+    if (q) {
+      rows = rows.filter(function (l) {
+        return (l.title + ' ' + l.city + ' ' + l.region + ' ' + l.type + ' ' + (l.blurb || ''))
+          .toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    if (type)   rows = rows.filter(function (l) { return l.type === type; });
+    if (region) rows = rows.filter(function (l) { return l.region === region; });
+    if (status) rows = rows.filter(function (l) { return l.status === status; });
+
+    /* A lease record stores a rate, and the unit is not consistent between
+       records, so it can never satisfy a price band honestly. Excluded from
+       the band rather than compared against it. */
+    if (price) {
+      var b = price.split('-');
+      var lo = parseInt(b[0], 10), hi = parseInt(b[1], 10);
+      rows = rows.filter(function (l) {
+        if (FC.isLease(l)) return false;
+        return l.price >= lo && l.price <= hi;
+      });
+    }
+
+    var parts = sort.split('-');
+    var key = parts[0], asc = parts[1] === 'asc';
+    rows.sort(function (a, b) {
+      if (key === 'title') {
+        return asc ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
+      }
+      if (key === 'price') {
+        /* Lease records sink to the bottom of any price sort — ranking a
+           rate against a sale price would be meaningless. */
+        var av = FC.isLease(a) ? -1 : a.price;
+        var bv = FC.isLease(b) ? -1 : b.price;
+        return asc ? av - bv : bv - av;
+      }
+      return (b[key] || 0) - (a[key] || 0);
+    });
+
+    render(rows);
+  }
+
+  function render(rows) {
+    var total = rows.length;
+    var pages = Math.max(1, Math.ceil(total / PER_PAGE));
+    if (state.page > pages) state.page = 1;
+    var slice = rows.slice((state.page - 1) * PER_PAGE, state.page * PER_PAGE);
+
+    $('count').innerHTML = total
+      ? '<b>' + total + '</b> ' + (total === 1 ? 'property' : 'properties')
+      : 'No matches';
+
+    var box = $('results');
+    if (!total) {
+      box.innerHTML = '<p class="empty">Nothing matches those filters. Try widening the price band or clearing the keyword.</p>';
+    } else if (state.view === 'grid') {
+      box.innerHTML = '<div class="cards">' + slice.map(FC.cardHTML).join('') + '</div>';
+    } else {
+      box.innerHTML = '<div class="list">' + slice.map(FC.rowHTML).join('') + '</div>';
+    }
+
+    var pager = $('pager');
+    if (pages < 2) { pager.innerHTML = ''; return; }
+    var html = '<button type="button" data-p="' + (state.page - 1) + '"' +
+      (state.page === 1 ? ' disabled' : '') + '>Prev</button>';
+    for (var i = 1; i <= pages; i++) {
+      html += '<button type="button" data-p="' + i + '"' +
+        (i === state.page ? ' aria-current="true"' : '') + '>' + i + '</button>';
+    }
+    html += '<button type="button" data-p="' + (state.page + 1) + '"' +
+      (state.page === pages ? ' disabled' : '') + '>Next</button>';
+    pager.innerHTML = html;
+  }
+
+  function setView(v) {
+    state.view = v;
+    $('v-grid').setAttribute('aria-pressed', String(v === 'grid'));
+    $('v-list').setAttribute('aria-pressed', String(v === 'list'));
+    apply();
+  }
+
+  FC.ready(function (rows) {
+    all = rows;
+
+    FC.options($('f-type'), FC.uniq(rows.map(function (l) { return l.type; })), 'Any asset class');
+    FC.options($('f-region'), FC.uniq(rows.map(function (l) { return l.region; })), 'Any market');
+    FC.options($('f-status'), FC.uniq(rows.map(function (l) { return l.status; })), 'Any availability');
+
+    var qs = new URLSearchParams(location.search);
+    ['type', 'region', 'status'].forEach(function (k) {
+      var v = qs.get(k);
+      if (!v) return;
+      var sel = $('f-' + k);
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === v) { sel.value = v; break; }
+      }
+    });
+
+    ['f-q', 'f-type', 'f-region', 'f-status', 'f-price', 'f-sort'].forEach(function (id) {
+      $(id).addEventListener('input', function () { state.page = 1; apply(); });
+      $(id).addEventListener('change', function () { state.page = 1; apply(); });
+    });
+
+    $('v-grid').addEventListener('click', function () { setView('grid'); });
+    $('v-list').addEventListener('click', function () { setView('list'); });
+
+    $('reset').addEventListener('click', function () {
+      ['f-q', 'f-type', 'f-region', 'f-status', 'f-price'].forEach(function (id) { $(id).value = ''; });
+      $('f-sort').value = 'price-desc';
+      state.page = 1;
+      apply();
+    });
+
+    $('pager').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-p]');
+      if (!b || b.disabled) return;
+      state.page = parseInt(b.getAttribute('data-p'), 10);
+      apply();
+      document.querySelector('.toolbar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    apply();
+  });
+})();
+</script>
+
+</body>
+</html>
